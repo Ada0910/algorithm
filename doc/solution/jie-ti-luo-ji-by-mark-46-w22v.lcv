@@ -1,0 +1,33 @@
+1. 确定解题思路：遇到右括号，就比较它和前一个元素是否是一对儿，前一个元素没有或者不是一对儿，则return false。
+2. 选择数据结构：按照第一步确定的解题思路，需要将元素一个一个的塞进去，碰到右括号就拿出来前一个，如果是一对儿就移除这一对儿，栈的数据结构符合这个问题的需求。
+3. 编码实现：注意考虑边界值，本题中是指最终剩下来的全部元素都是左括号。
+
+* java
+
+```java
+private boolean isValid(String s) {
+    int length = s.length();
+    if (length % 2 != 0) {
+        return false;
+    }
+
+    Map<Character, Character> map = new HashMap<>(3);
+    map.put(')', '(');
+    map.put(']', '[');
+    map.put('}', '{');
+
+    Stack<Character> stack = new Stack<>();
+    for (char aChar : s.toCharArray()) {
+        if (map.containsKey(aChar)) {
+            if (stack.isEmpty() || !map.get(aChar).equals(stack.pop())) {
+                return false;
+            }
+        } else {
+            stack.push(aChar);
+        }
+    }
+
+    return stack.isEmpty();
+}
+```
+
