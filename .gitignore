@@ -1,1 +1,3 @@
-doc  //忽略这个doc目录
+doc 
+/doc
+.gitignore
