@@ -1,8 +1,9 @@
-
+import java.util.Objects;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 	public int strStr(String haystack, String needle) {
+		//为空判断
 		if (needle.isEmpty()) {
 			return 0;
 		}
@@ -24,8 +25,9 @@ class Solution {
 		char[] b = needle.toCharArray();
 
 		for (int i = 0; i < a.length; i++) {
-			if (a[i] == b[0]) {
-				if (needle.equals(haystack.substring(i, i + needle.length()-1))) {
+			if (Objects.equals(a[i],b[0])&&i+needle.length()<=haystack.length()) {
+				String temp = haystack.substring(i, i + needle.length());
+				if (needle.equals(temp)) {
 					return i;
 				}
 			}
