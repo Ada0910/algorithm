@@ -20,7 +20,7 @@ class Solution {
 		return build(nums, 0, nums.length - 1);
 	}
 
-	// 构建一个函数,排序left,right的数组，返回根节点
+	// 这个函数的定义是：返回一个通过nums数组，以left,right构建的树的根节点
 	public TreeNode build(int[] nums, int left, int right) {
 		if (left > right) {
 			return null;
